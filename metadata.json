@@ -1,0 +1,6 @@
+{
+  "name": "Lista da Casa",
+  "description": "Lista de compras compartilhada em tempo real para famílias, casais e repúblicas com modo compras e catálogo inteligente.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

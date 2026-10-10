@@ -1,0 +1,257 @@
+{
+  "entities": {
+    "House": {
+      "title": "House",
+      "description": "A collaborative household grouping members and shared shopping lists",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the house"
+        },
+        "code": {
+          "type": "string",
+          "description": "Invite code of the house"
+        },
+        "ownerId": {
+          "type": "string",
+          "description": "UID of the creator"
+        },
+        "memberUids": {
+          "type": "array",
+          "description": "List of user UIDs belonging to this house"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of creation"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of last update"
+        }
+      },
+      "required": ["name", "code", "ownerId", "memberUids"]
+    },
+    "ShoppingList": {
+      "title": "ShoppingList",
+      "description": "A shopping list belonging to a house",
+      "type": "object",
+      "properties": {
+        "houseId": {
+          "type": "string",
+          "description": "Reference to parent house"
+        },
+        "name": {
+          "type": "string",
+          "description": "Title of the list"
+        },
+        "icon": {
+          "type": "string",
+          "description": "Emoji icon for the list"
+        },
+        "colorHex": {
+          "type": "string",
+          "description": "Theme color hex"
+        },
+        "isArchived": {
+          "type": "boolean",
+          "description": "Whether list is archived"
+        },
+        "memberUids": {
+          "type": "array",
+          "description": "List of user UIDs authorized to view and edit this list"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of creation"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of last update"
+        }
+      },
+      "required": ["houseId", "name", "icon", "colorHex", "isArchived", "memberUids"]
+    },
+    "ShoppingItem": {
+      "title": "ShoppingItem",
+      "description": "An individual item on a shopping list",
+      "type": "object",
+      "properties": {
+        "listId": {
+          "type": "string",
+          "description": "Parent list ID"
+        },
+        "houseId": {
+          "type": "string",
+          "description": "Parent house ID"
+        },
+        "name": {
+          "type": "string",
+          "description": "Item name"
+        },
+        "category": {
+          "type": "string",
+          "description": "Category or aisle name"
+        },
+        "quantity": {
+          "type": "string",
+          "description": "Quantity string e.g. 2 kg or 3 un"
+        },
+        "itemCount": {
+          "type": "integer",
+          "description": "Multiplier count"
+        },
+        "unitPrice": {
+          "type": "number",
+          "description": "Unit price in BRL"
+        },
+        "totalPrice": {
+          "type": "number",
+          "description": "Calculated total price in BRL"
+        },
+        "isCompleted": {
+          "type": "boolean",
+          "description": "Whether item was checked in supermarket"
+        },
+        "notes": {
+          "type": "string",
+          "description": "Optional notes or brand preference"
+        },
+        "addedByMemberName": {
+          "type": "string",
+          "description": "Display name of who added the item"
+        },
+        "addedByUid": {
+          "type": "string",
+          "description": "UID of author"
+        },
+        "memberUids": {
+          "type": "array",
+          "description": "List of authorized house member UIDs"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of creation"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of last update"
+        }
+      },
+      "required": ["listId", "houseId", "name", "category", "itemCount", "isCompleted", "memberUids"]
+    },
+    "Member": {
+      "title": "Member",
+      "description": "A user profile member in a house",
+      "type": "object",
+      "properties": {
+        "houseId": {
+          "type": "string",
+          "description": "House ID"
+        },
+        "userId": {
+          "type": "string",
+          "description": "Auth UID"
+        },
+        "name": {
+          "type": "string",
+          "description": "Display name"
+        },
+        "avatarColorIndex": {
+          "type": "integer",
+          "description": "Avatar palette index"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of creation"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of last update"
+        }
+      },
+      "required": ["houseId", "userId", "name", "avatarColorIndex"]
+    },
+    "PurchaseHistory": {
+      "title": "PurchaseHistory",
+      "description": "Completed purchase session archive",
+      "type": "object",
+      "properties": {
+        "houseId": {
+          "type": "string",
+          "description": "House ID"
+        },
+        "listName": {
+          "type": "string",
+          "description": "List name at time of purchase"
+        },
+        "totalAmount": {
+          "type": "number",
+          "description": "Final total spent in BRL"
+        },
+        "totalItemsCount": {
+          "type": "integer",
+          "description": "Total quantity of items"
+        },
+        "completedByMember": {
+          "type": "string",
+          "description": "Name of member who concluded purchase"
+        },
+        "memberUids": {
+          "type": "array",
+          "description": "Authorized member UIDs"
+        },
+        "timestamp": {
+          "type": "integer",
+          "description": "Epoch timestamp millis"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp"
+        }
+      },
+      "required": ["houseId", "listName", "totalAmount", "totalItemsCount", "memberUids"]
+    }
+  },
+  "firestore": {
+    "/houses/{houseId}": {
+      "schema": {
+        "$ref": "#/entities/House"
+      },
+      "description": "Houses collection"
+    },
+    "/shopping_lists/{listId}": {
+      "schema": {
+        "$ref": "#/entities/ShoppingList"
+      },
+      "description": "Shopping lists collection"
+    },
+    "/shopping_items/{itemId}": {
+      "schema": {
+        "$ref": "#/entities/ShoppingItem"
+      },
+      "description": "Shopping items collection"
+    },
+    "/members/{memberId}": {
+      "schema": {
+        "$ref": "#/entities/Member"
+      },
+      "description": "Members collection"
+    },
+    "/purchase_history/{historyId}": {
+      "schema": {
+        "$ref": "#/entities/PurchaseHistory"
+      },
+      "description": "Purchase history sessions collection"
+    }
+  }
+}
