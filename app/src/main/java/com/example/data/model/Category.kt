@@ -206,7 +206,17 @@ object Categories {
         )
         if (matches(padariaKeywords)) return ALL[1]
 
-        // 3. Laticínios & Frios / Dairy
+        // 3. Congelados & Prontos / Frozen Foods (Checked before raw meat/cheese for items like pizza, lasanha, hamburguer, nuggets)
+        val congeladosKeywords = listOf(
+            "frozen", "freezer", "ice cream", "sorvete", "pizza", "pizzas", "pizza congelada", "frozen pizza",
+            "hamburguer", "burger", "nuggets", "empanado", "lasanha", "lasanha congelada", "frozen meal",
+            "batata frita congelada", "french fries", "fries", "picole", "popsicle",
+            "acai", "ice", "gelo", "polpa de fruta", "legumes congelados", "frozen vegetables",
+            "pao de alho", "waffle", "waffles", "quibe congelado", "coxinha congelada", "congelados"
+        )
+        if (matches(congeladosKeywords)) return ALL[5]
+
+        // 4. Laticínios & Frios / Dairy
         val laticiniosKeywords = listOf(
             "dairy", "milk", "cheese", "cheeses", "cheddar", "mozzarella", "mussarela",
             "parmesan", "parmesao", "butter", "manteiga", "margarine", "margarina",
@@ -220,7 +230,7 @@ object Categories {
         )
         if (matches(laticiniosKeywords)) return ALL[2]
 
-        // 4. Açougue & Peixaria / Meat & Seafood
+        // 5. Açougue & Peixaria / Meat & Seafood
         val acougueKeywords = listOf(
             "meat", "meats", "beef", "steak", "steaks", "pork", "poultry", "chicken",
             "turkey", "fish", "fishes", "seafood", "salmon", "tuna", "shrimp", "shrimps",
@@ -236,7 +246,7 @@ object Categories {
         )
         if (matches(acougueKeywords)) return ALL[3]
 
-        // 5. Mercearia & Grãos / Pantry & Grains
+        // 6. Mercearia & Grãos / Pantry & Grains
         val merceariaKeywords = listOf(
             "pantry", "grains", "rice", "beans", "pasta", "spaghetti", "penne", "noodles",
             "macarrao", "arroz", "feijao", "fusilli", "parafuso", "talharim", "miojo",
@@ -252,16 +262,6 @@ object Categories {
             "canela", "cinnamon", "leite de coco", "coconut milk"
         )
         if (matches(merceariaKeywords)) return ALL[4]
-
-        // 6. Congelados & Prontos / Frozen Foods
-        val congeladosKeywords = listOf(
-            "frozen", "freezer", "ice cream", "sorvete", "pizza congelada", "frozen pizza",
-            "hamburguer", "burger", "nuggets", "empanado", "lasanha congelada", "frozen meal",
-            "batata frita congelada", "french fries", "fries", "picole", "popsicle",
-            "acai", "ice", "gelo", "polpa de fruta", "legumes congelados", "frozen vegetables",
-            "pao de alho", "waffle", "waffles", "quibe congelado", "coxinha congelada", "congelados"
-        )
-        if (matches(congeladosKeywords)) return ALL[5]
 
         // 7. Bebidas / Beverages
         val bebidasKeywords = listOf(

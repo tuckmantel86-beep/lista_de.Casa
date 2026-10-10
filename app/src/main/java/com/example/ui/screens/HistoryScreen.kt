@@ -293,7 +293,7 @@ private fun PurchaseHistoryCard(
                         color = MaterialTheme.colorScheme.primary
                     )
                     Text(
-                        text = "${purchase.itemCount} itens",
+                        text = "${purchase.itemCount} ${if (purchase.itemCount == 1) "item" else "itens"}",
                         style = MaterialTheme.typography.labelSmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )

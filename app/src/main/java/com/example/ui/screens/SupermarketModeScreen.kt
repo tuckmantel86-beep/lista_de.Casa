@@ -251,7 +251,7 @@ fun SupermarketModeScreen(
                             ) {
                                 if (remainingItems > 0) {
                                     Text(
-                                        text = "Faltam $remainingItems itens",
+                                        text = if (remainingItems == 1) "Falta 1 item" else "Faltam $remainingItems itens",
                                         style = MaterialTheme.typography.labelSmall,
                                         color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.8f)
                                     )
@@ -310,7 +310,7 @@ fun SupermarketModeScreen(
                                 color = MaterialTheme.colorScheme.primary
                             )
                             Text(
-                                text = if (completedItems > 0) "$completedItems itens comprados" else "$totalItems itens na lista",
+                                text = if (completedItems > 0) "$completedItems ${if (completedItems == 1) "item comprado" else "itens comprados"}" else "$totalItems ${if (totalItems == 1) "item na lista" else "itens na lista"}",
                                 style = MaterialTheme.typography.labelSmall,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                             )
@@ -482,7 +482,11 @@ fun SupermarketModeScreen(
                                 horizontalArrangement = Arrangement.SpaceBetween
                             ) {
                                 Text("Itens Comprados:", style = MaterialTheme.typography.bodySmall)
-                                Text("$completedItems itens", style = MaterialTheme.typography.bodySmall, fontWeight = FontWeight.Bold)
+                                Text(
+                                    "$completedItems ${if (completedItems == 1) "item" else "itens"}",
+                                    style = MaterialTheme.typography.bodySmall,
+                                    fontWeight = FontWeight.Bold
+                                )
                             }
                         }
                     }
@@ -796,7 +800,7 @@ private fun SupermarketAisleCollapsibleHeader(
                         }
                         Spacer(modifier = Modifier.width(6.dp))
                         Text(
-                            text = if (isCollapsed) "$totalCount iten${if (totalCount > 1) "s" else ""} • Toque para abrir" else category.description,
+                            text = if (isCollapsed) "$totalCount ${if (totalCount == 1) "item" else "itens"} • Toque para abrir" else category.description,
                             style = MaterialTheme.typography.labelSmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                             fontSize = 11.sp,

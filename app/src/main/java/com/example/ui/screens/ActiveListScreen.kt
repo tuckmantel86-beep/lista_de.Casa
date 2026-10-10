@@ -255,7 +255,7 @@ fun ActiveListScreen(
                             )
                         }
                         Text(
-                            text = "$completedItems de $totalItems itens comprados ($progressPercent%)",
+                            text = if (totalItems > 0) "$completedItems de $totalItems ${if (totalItems == 1) "item comprado" else "itens comprados"} ($progressPercent%)" else "Lista vazia",
                             style = MaterialTheme.typography.labelSmall,
                             color = MaterialTheme.colorScheme.primary,
                             fontWeight = FontWeight.SemiBold,
@@ -612,7 +612,7 @@ private fun CategoryCollapsibleHeader(
                         if (isCollapsed) {
                             Spacer(modifier = Modifier.width(6.dp))
                             Text(
-                                text = "$totalCount iten${if (totalCount > 1) "s" else ""} • Toque para expandir",
+                                text = "$totalCount ${if (totalCount == 1) "item" else "itens"} • Toque para expandir",
                                 style = MaterialTheme.typography.labelSmall,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.8f),
                                 fontSize = 11.sp,

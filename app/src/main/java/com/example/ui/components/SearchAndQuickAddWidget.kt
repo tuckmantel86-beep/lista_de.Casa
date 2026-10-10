@@ -281,11 +281,13 @@ fun SearchAndQuickAddWidget(
                             shape = RoundedCornerShape(10.dp),
                             color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.65f),
                             border = BorderStroke(0.5.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.6f)),
-                            modifier = Modifier.clickable {
-                                onAddItem(item.name, item.categoryId, item.defaultQuantity)
-                                keyboardController?.hide()
-                                focusManager.clearFocus()
-                            }
+                            modifier = Modifier
+                                .clickable {
+                                    onAddItem(item.name, item.categoryId, item.defaultQuantity)
+                                    keyboardController?.hide()
+                                    focusManager.clearFocus()
+                                }
+                                .testTag("quick_add_essential_${item.name.take(10).trim()}")
                         ) {
                             Row(
                                 modifier = Modifier.padding(horizontal = 7.dp, vertical = 3.dp),

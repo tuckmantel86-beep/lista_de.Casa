@@ -119,4 +119,28 @@ class ExampleRobolectricTest {
     )
     assertEquals(22.50, item.totalPrice, 0.001)
   }
+
+  @Test
+  fun `verify all 11 categories have distinct aisles and valid metadata`() {
+    val allAisles = Categories.ALL.map { it.aisleNumber }.toSet()
+    assertEquals(11, allAisles.size)
+    for (i in 1..11) {
+      assertTrue("Missing aisle $i", allAisles.contains(i))
+    }
+  }
+
+  @Test
+  fun `verify detectCategory for frozen, drinks, hygiene, and sweets`() {
+    val pizza = Categories.detectCategory("Pizza Calabresa Sadia")
+    assertEquals("congelados", pizza.id)
+
+    val coca = Categories.detectCategory("Coca Cola 2 Litros")
+    assertEquals("bebidas", coca.id)
+
+    val shampoo = Categories.detectCategory("Shampoo Pantene 400ml")
+    assertEquals("higiene", shampoo.id)
+
+    val chocolate = Categories.detectCategory("Chocolate Barra Nestle")
+    assertEquals("petiscos", chocolate.id)
+  }
 }

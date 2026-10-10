@@ -784,7 +784,8 @@ class ShoppingRepository(
         val sb = StringBuilder()
         sb.append("🛒 *Lista da Casa: $listName*\n")
         sb.append("🏠 $houseName ($houseCode)\n")
-        sb.append("📊 Progresso: $completedCount/$totalCount itens comprados ($percent%)\n\n")
+        val itemNoun = if (totalCount == 1) "item comprado" else "itens comprados"
+        sb.append("📊 Progresso: $completedCount/$totalCount $itemNoun ($percent%)\n\n")
 
         val grouped = items.groupBy { Categories.getByName(it.category) }
             .toSortedMap(compareBy { it.aisleNumber })

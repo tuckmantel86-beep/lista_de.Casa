@@ -143,7 +143,7 @@ fun ListsScreen(
                                         )
                                         if (isSelected) {
                                             Text(
-                                                text = if (totalItems > 0) "$completedItems de $totalItems itens comprados" else "Lista vazia",
+                                                text = if (totalItems > 0) "$completedItems de $totalItems ${if (totalItems == 1) "item comprado" else "itens comprados"}" else "Lista vazia",
                                                 style = MaterialTheme.typography.bodySmall,
                                                 color = MaterialTheme.colorScheme.primary,
                                                 fontWeight = FontWeight.SemiBold
